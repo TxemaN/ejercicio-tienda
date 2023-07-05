@@ -18,41 +18,43 @@ const arrayAnyadidos = [];
 
 document.addEventListener("click", (ev) => {
   if (ev.target.classList.contains("btn")) {
-     arrayAnyadidos.push(ev.target.id);
-     
+    arrayAnyadidos.push(ev.target.id);
+
   }
-  
+
   subirArrayLocal()
- 
+
   llenarVacia();
-  
-  
+
+
 });
 console.log(arrayAnyadidos);
 
 // Funciones
 
 const subirArrayLocal = () => {
-    let comprados = arrayAnyadidos;
-    console.log(comprados)
-    localStorage.setItem('compradosArray', JSON.stringify(comprados));
-    console.log(comprados);
-    return comprados
+  let comprados = arrayAnyadidos;
+  console.log(comprados)
+  localStorage.setItem('compradosArray', JSON.stringify(comprados));
+  console.log(comprados);
+  return comprados
 }
 
 const llenarVacia = () => {
-    const otroArray = subirArrayLocal()
-    console.log(otroArray);
-    otroArray.forEach((item, index) => {
-      
-    let nuevoArticulo = document.createElement("P");
-    
-    nuevoArticulo.textContent = item;  
-    console.log(nuevoArticulo);
+  const otroArray = subirArrayLocal()
+  console.log(otroArray);
+  otroArray.forEach((item, index) => {
+
+    const nuevoArticulo = document.createElement("P");
+
+    nuevoArticulo.textContent = item;
+     console.log(nuevoArticulo);
     fragmento.append(nuevoArticulo);
-    
+
   });
+  if (otroArray.length > 1) {
+    listaVacia.removeChild(listaVacia.children[0]);
+  }
 
   listaVacia.append(fragmento);
 };
-  
